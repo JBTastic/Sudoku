@@ -4,7 +4,7 @@ fun getDifficulty(): Int? {
         println("Enter difficulty level:\n1 = Easy\n2 = Medium (default)\n3 = Hard")
         val input = readLine()
         if (input.isNullOrEmpty()) {
-            return 2
+            return -1
         }
         try {
             val number = input?.toInt()

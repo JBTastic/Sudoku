@@ -1,5 +1,17 @@
 fun printBoard(difficulty: Int) {
-    println("-".repeat(31))
+
+    // print column number above board
+    for (i in 1..9) {
+        if (i > 3 && i%3==1) {
+            print(" ")
+            print("  ${underline}$i${reset}")
+        }else {
+            print("  ${underline}$i${reset}")
+        }
+    }
+    println()
+
+    println(" "+"-".repeat(29))
     for (i in 0 until rows) {
         for (j in 0 until cols) {
             // add vertical lines after every 3rd cell (only for indices 0, 3, 6)
@@ -47,22 +59,13 @@ fun printBoard(difficulty: Int) {
                 }
             }
 
-
-
-/*
-            if (board[i][j] == 0) {
-                print(" ${board[i][j]} ")
-            } else if (Pair(i+1, j+1) in unmodifiedNumbers) {
-                print(" ${red}${board[i][j]}${reset} ")
-            } else {
-                print(" ${underline}${board[i][j]}${reset} ")
-            }
-*/
-
-
             // add vertical lines after last cell
             if (j == cols-1) {
                 print("|")
+
+                // print row number on the right hand side of the board
+                print(" ")
+                print("${underline}${i+1}${reset}")
             }
         }
 
@@ -70,7 +73,7 @@ fun printBoard(difficulty: Int) {
 
         // add horizontal line after every 3rd block (only for indices 0, 3, 6, 9)
         if ((i + 1) % 3 == 0 && i != rows) {
-            println("-".repeat(31))
+            println(" "+"-".repeat(29))
         }
     }
 }
