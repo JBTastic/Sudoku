@@ -1,19 +1,19 @@
 fun isValid(row: Int, col: Int, num: Int): Boolean {
-    // Überprüfe Zeile
+    // check row
     for (i in 0 until cols-1) {
         if (board[row][i] == num) {
             return false
         }
     }
 
-    // Überprüfe Spalte
+    // check column
     for (i in 0 until rows-1) {
         if (board[i][col] == num) {
             return false
         }
     }
 
-    // Überprüfe 3x3 Block
+    // check 3x3 block
     val startRow = row / 3 * 3
     val startCol = col / 3 * 3
     for (i in startRow until startRow + 3) {

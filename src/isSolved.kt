@@ -1,32 +1,32 @@
 fun isSolved(): Boolean {
-    // Überprüfen, ob alle Zellen ausgefüllt sind
+    // check if all cells are filled
     for (i in 0 until rows) {
         for (j in 0 until cols) {
             if (board[i][j] == 0) {
-                return false // Ein leeres Feld gefunden, daher nicht gelöst
+                return false // board is not solved
             }
         }
     }
 
-    // Überprüfen, ob alle Zeilen gültig sind (keine Duplikate und enthält alle Zahlen von 1 bis 9)
+    // check if all rows are valid
     for (i in 0 until rows) {
         if (!isValidUnit(board[i])) {
-            return false // Ungültige Zeile
+            return false // invalid row
         }
     }
 
-    // Überprüfen, ob alle Spalten gültig sind
+    // check if all columns are valid
     for (j in 0 until cols) {
         val column = IntArray(rows)
         for (i in 0 until rows) {
             column[i] = board[i][j]
         }
         if (!isValidUnit(column)) {
-            return false // Ungültige Spalte
+            return false // invalid column
         }
     }
 
-    // Überprüfen, ob alle 3x3 Blöcke gültig sind
+    // check if all 3x3 blocks are valid
     for (i in 0 until 9 step 3) {
         for (j in 0 until 9 step 3) {
             val block = IntArray(9)
@@ -37,15 +37,15 @@ fun isSolved(): Boolean {
                 }
             }
             if (!isValidUnit(block)) {
-                return false // Ungültiger Block
+                return false // invalid block
             }
         }
     }
 
-    return true // Sudoku ist vollständig und korrekt
+    return true // sudoku is solved
 }
 
-// Hilfsfunktion zur Überprüfung, ob eine Einheit (Zeile, Spalte oder Block) gültig ist
+// helperfunction to check if a unit (row, column, or block) is valid
 fun isValidUnit(unit: IntArray): Boolean {
     return unit.toSet().size == unit.size && unit.all { it in 1..9 }
 }
