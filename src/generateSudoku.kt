@@ -6,6 +6,7 @@ fun generateSudoku(difficulty: Int) {
         1 -> 10
         2 -> 20
         3 -> 30
+        -1 -> 1
         else -> 20
     }
     var i = 0

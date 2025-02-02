@@ -21,6 +21,7 @@ fun clearScreen() {
 }
 
 fun main() {
+    clearScreen()
     // generate a solved sudoku board
     solveSudoku()
 
@@ -32,6 +33,10 @@ fun main() {
 
     // clear the screen
     clearScreen()
+
+    if (difficulty == -1) {
+        println("Congrats, you found the hidden cheat code!")
+    }
 
     // print the board
     printBoard(difficulty)

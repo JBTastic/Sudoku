@@ -4,11 +4,11 @@ fun getDifficulty(): Int? {
         println("Enter difficulty level:\n1 = Easy\n2 = Medium (default)\n3 = Hard")
         val input = readLine()
         if (input.isNullOrEmpty()) {
-            return -1
+            return 2
         }
         try {
             val number = input?.toInt()
-            if (number in listOf(1,2,3)) {
+            if (number in listOf(1,2,3, -1)) {
                 return number
             } else {
                 println("Invalid difficulty level! Please enter 1, 2, or 3.")
