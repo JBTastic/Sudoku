@@ -13,24 +13,11 @@ val gray = "\u001B[90m"
 val underline = "\u001B[4m"
 val fat = "\u001B[1m"
 val reset = "\u001B[0m"
+val clear = "\u001B[H\u001B[2J"
 
-fun isBoardFull(): Boolean {
-    for (i in 0 until rows) {
-        for (j in 0 until cols) {
-            if (board[i][j] == 0) {
-                return false
-            }
-        }
-    }
-    return true
-}
-
-fun fillBoardWithZeros() {
-    for (i in 0 until rows) {
-        for (j in 0 until cols) {
-            board[i][j] = 0
-        }
-    }
+fun clearScreen() {
+    print(clear)
+    System.out.flush()
 }
 
 fun main() {
@@ -43,13 +30,18 @@ fun main() {
     // delete some cells based on the difficulty level
     generateSudoku(difficulty!!)
 
+    // clear the screen
+    clearScreen()
+
     // print the board
     printBoard(difficulty)
 
     // as long as the board is not solved, let the player make a move and then print the board
     while (!isSolved()) {
-        playerMove()
-        printBoard(difficulty)
+        if (playerMove()) {
+            clearScreen()
+            printBoard(difficulty)
+        }
     }
 
     // when the player won, print a congratulatory message
