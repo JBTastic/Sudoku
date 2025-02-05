@@ -1,3 +1,4 @@
 #!/bin/bash
-kotlinc src/*.kt -include-runtime -d main.jar && echo "COMPILATION SUCCEDED"
+rm main.jar
+kotlinc src/*.kt -include-runtime -d main.jar
 java -jar main.jar
