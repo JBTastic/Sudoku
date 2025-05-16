@@ -14,7 +14,7 @@ fun playerMove(): Boolean {
             System.exit(0)
             return false            
         } else {
-            println("Invalid input! Row and column must be between 1 and 9,number must be between 0 and 9, you can only edit empty cells.")
+            println("Invalid input! Row and column must be between 1 and 9, number must be between 0 and 9, you can only edit empty cells.")
             return false
         }
     } catch (e: Exception) {
